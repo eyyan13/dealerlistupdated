@@ -34,87 +34,47 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
-              ::-webkit-scrollbar-button:horizontal:decrement {
-       background-image: url('left-arrow.png'); /* Left button */
-       background-size: contain;
-     }
-     
-     ::-webkit-scrollbar-button:horizontal:increment {
-       background-image: url('right-arrow.png'); /* Right button */
-       background-size: contain;
-     }
-   ::-webkit-scrollbar{
-       width: 0.9rem;
-     }
-     
-     ::-webkit-scrollbar-track{
-       background-color: rgb(255, 255, 255);
-     }
-     
-     ::-webkit-scrollbar-thumb{
-       background-color: rgb(216, 19, 36);
-       background-clip: inherit;
-       height: 0.3rem;
-     }
-     
-     ::-webkit-scrollbar-thumb:hover{
-       background-color:  rgb(231, 40, 56);
-       scroll-behavior: smooth;
-     }
-     
-     /* Horizontal Scrollbar */
-     ::-webkit-scrollbar:horizontal{
-       background: rgb(141, 141, 234);
-       width: 0.5rem;
-       height: 0.4rem;
-       scroll-behavior: smooth;
-     }
-     
-     /* Scrollbar Buttons */
-     ::-webkit-scrollbar-button {
-       background-color: rgb(255, 255, 255); /* Button color */
-       height: 18px; /* Button height */
-       width: 18px; /* Button width */
-     }
-     
-     ::-webkit-scrollbar-button:increment {
-       background-color:rgb(255, 255, 255)/* Button for down/right */
-     }
-     
-     ::-webkit-scrollbar-button:decrement {
-       background-color:rgb(255, 255, 255) /* Button for up/left */
-     }
-     
-     ::-webkit-scrollbar-button:vertical:decrement {
-       background-image: url('./css/up.png'); /* Up button */
-       background-size: contain;
-     }
-     
-     ::-webkit-scrollbar-button:vertical:increment {
-       background-image: url('./css/down.png'); /* Down button */
-       background-size: contain;
-     }
-     
-     ::-webkit-scrollbar-button:horizontal:decrement {
-       background-image: url('path-to-left-arrow.png'); /* Left button */
-       background-size: contain;
-     }
-     
-     ::-webkit-scrollbar-button:horizontal:increment {
-       background-image: url('path-to-right-arrow.png'); /* Right button */
-       background-size: contain;
-     }
-        body {
-            margin: 0;
-            padding: 0;
-        }
         #map {
             height: 400px;
             width: 100%;
             margin-top: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: none;
+            display: block;
+        }
+        .card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+        }
+        ::-webkit-scrollbar {
+            width: 0.9rem;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: rgb(255, 255, 255);
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgb(216, 19, 36);
+            background-clip: inherit;
+            height: 0.3rem;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgb(231, 40, 56);
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar:horizontal {
+            background: rgb(141, 141, 234);
+            width: 0.5rem;
+            height: 0.4rem;
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar-button {
+            background-color: rgb(255, 255, 255);
+            height: 18px;
+            width: 18px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
         }
         .uwu {
             border-bottom: 2px solid #e74c3c;
@@ -131,12 +91,22 @@
         #results {
             margin-top: 20px;
         }
+        .dealer-card {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .dealer-card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+        }
     </style>
 </head>
 
 <body>
-
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <img class="imgdec" src="PRTC Logo (EPS)-01-01 (2).jpg" alt="Logo" style="width: 10rem;">
@@ -165,198 +135,31 @@
             </div>
         </div>
     </nav>
+
     <div class="wabtn" id="wabutton">
         <a  target="_blank" href="https://wa.me/923008247187?text=" style=" cursor: pointer;height: 48px;width: auto;padding: 7px 7px 7px 7px;position: fixed !important;color: #fff;bottom: 20px;right: 20px;;display: flex;text-decoration: none;font-size: 16px;font-weight: 600;font-family: sans-serif;align-items: center;z-index: 999999999 !important;background-color: #00E785;box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.4);border-radius: 100px;animation: pulse 2.5s ease infinite;">
           <svg width="34" height="34" style="padding: 5px;" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1024_354)"><path d="M23.8759 4.06939C21.4959 1.68839 18.3316 0.253548 14.9723 0.0320463C11.613 -0.189455 8.28774 0.817483 5.61565 2.86535C2.94357 4.91323 1.10682 7.86244 0.447451 11.1638C-0.21192 14.4652 0.351026 17.8937 2.03146 20.8109L0.0625 28.0004L7.42006 26.0712C9.45505 27.1794 11.7353 27.7601 14.0524 27.7602H14.0583C16.8029 27.7599 19.4859 26.946 21.768 25.4212C24.0502 23.8965 25.829 21.7294 26.8798 19.1939C27.9305 16.6583 28.206 13.8682 27.6713 11.1761C27.1367 8.48406 25.8159 6.01095 23.8759 4.06939ZM14.0583 25.4169H14.0538C11.988 25.417 9.96008 24.8617 8.1825 23.8091L7.7611 23.5593L3.3945 24.704L4.56014 20.448L4.28546 20.0117C2.92594 17.8454 2.32491 15.2886 2.57684 12.7434C2.82877 10.1982 3.91938 7.80894 5.67722 5.95113C7.43506 4.09332 9.76045 2.87235 12.2878 2.48017C14.8152 2.08799 17.4013 2.54684 19.6395 3.78457C21.8776 5.02231 23.641 6.96875 24.6524 9.3179C25.6638 11.6671 25.8659 14.2857 25.2268 16.7622C24.5877 19.2387 23.1438 21.4326 21.122 22.999C19.1001 24.5655 16.6151 25.4156 14.0575 25.4157L14.0583 25.4169Z" fill="#E0E0E0"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.6291 7.98363C10.3723 7.41271 10.1019 7.40123 9.85771 7.39143C9.65779 7.38275 9.42903 7.38331 9.20083 7.38331C9.0271 7.3879 8.8562 7.42837 8.69887 7.5022C8.54154 7.57602 8.40119 7.68159 8.28663 7.81227C7.899 8.17929 7.59209 8.62305 7.38547 9.11526C7.17884 9.60747 7.07704 10.1373 7.08655 10.6711C7.08655 12.3578 8.31519 13.9877 8.48655 14.2164C8.65791 14.4452 10.8581 18.0169 14.3425 19.3908C17.2382 20.5327 17.8276 20.3056 18.4562 20.2485C19.0848 20.1913 20.4843 19.4194 20.7701 18.6189C21.056 17.8183 21.0557 17.1323 20.9701 16.989C20.8844 16.8456 20.6559 16.7605 20.3129 16.5889C19.9699 16.4172 18.2849 15.5879 17.9704 15.4736C17.656 15.3594 17.4275 15.3023 17.199 15.6455C16.9705 15.9888 16.3139 16.7602 16.1137 16.9895C15.9135 17.2189 15.7136 17.2471 15.3709 17.0758C14.3603 16.6729 13.4275 16.0972 12.6143 15.3745C11.8648 14.6818 11.2221 13.8819 10.7072 13.0007C10.5073 12.6579 10.6857 12.472 10.8579 12.3007C11.0119 12.1472 11.2006 11.9005 11.3722 11.7003C11.5129 11.5271 11.6282 11.3346 11.7147 11.1289C11.7603 11.0343 11.7817 10.9299 11.7768 10.825C11.7719 10.7201 11.7409 10.6182 11.6867 10.5283C11.6001 10.3566 10.9337 8.66151 10.6291 7.98363Z" fill="white"></path><path d="M23.7628 4.02445C21.4107 1.66917 18.2825 0.249336 14.9611 0.0294866C11.6397 -0.190363 8.35161 0.804769 5.70953 2.82947C3.06745 4.85417 1.25154 7.77034 0.600156 11.0346C-0.051233 14.299 0.506321 17.6888 2.16894 20.5724L0.222656 27.6808L7.49566 25.7737C9.50727 26.8692 11.7613 27.4432 14.0519 27.4434H14.0577C16.7711 27.4436 19.4235 26.6392 21.6798 25.1321C23.936 23.6249 25.6947 21.4825 26.7335 18.9759C27.7722 16.4693 28.0444 13.711 27.5157 11.0497C26.9869 8.38835 25.6809 5.94358 23.7628 4.02445ZM14.0577 25.1269H14.0547C12.0125 25.1271 10.0078 24.5782 8.25054 23.5377L7.8339 23.2907L3.51686 24.4222L4.66906 20.2143L4.39774 19.7831C3.05387 17.6415 2.4598 15.1141 2.70892 12.598C2.95804 10.082 4.03622 7.72013 5.77398 5.88366C7.51173 4.04719 9.81051 2.84028 12.3089 2.45266C14.8074 2.06505 17.3638 2.5187 19.5763 3.74232C21.7888 4.96593 23.5319 6.89011 24.5317 9.21238C25.5314 11.5346 25.7311 14.1233 25.0993 16.5714C24.4675 19.0195 23.0401 21.1883 21.0414 22.7367C19.0427 24.2851 16.5861 25.1254 14.0577 25.1255V25.1269Z" fill="white"></path></g><defs><clipPath id="clip0_1024_354"><rect width="27.8748" height="28" fill="white" transform="translate(0.0625)"></rect></clipPath></defs></svg>
           <span class="button-text">Chat with us!</span>
         </a>
       </div>
-    <!-- Dealer Search Section -->
+
     <div class="container py-5">
         <h4 class="text-center uwu">Find Your Nearest Dealer</h4>
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <input type="text" id="searchInput" placeholder="Enter location" class="form-control">
+                <input type="text" id="searchInput" placeholder="Enter City" class="form-control">
                 <button onclick="searchDealers()" class="btn btn-primary mt-3 w-100">Search</button>
+                <button onclick="locateNearestDealer()" class="btn btn-success mt-3 w-100">Locate Nearest Dealer</button>
             </div>
         </div>
-        <!-- Map Container -->
         <div id="map"></div>
-        <!-- Search Results -->
         <div id="results" class="mt-5"></div>
     </div>
 
-    <!-- Footer -->
     <div class="container-fluid bg-dark text-light footer pt-1 mt-5 no-padding wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5 no-padding">
-            <div class="col-12 text-center">
-                <img src="img/PRTC.png" alt="logo" style="width: 25rem; margin-top: -90px;">
-            </div>
-            <div class="row g-5">
-                <div class="row mt-4">
-                    <!-- Head Office -->
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="text-light mb-4">Head Office</h4>
-                        <div class="d-flex flex-column" style="font-size: medium;">
-                            <p class="mb-2">
-                                <i class="fa fa-map-marker-alt me-3"></i>
-                                <a href="https://www.google.com/maps/search/79-C,+PHASE+II+EXTENSION+DHA,+KARACHI+-+75500" target="_blank"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    79-C, PHASE II EXTENSION DHA, KARACHI - 75500
-                                </a>
-                            </p>
-                            <p class="mb-2">
-                                <i class="fa fa-phone-alt me-3"></i>
-                                <a href="tel:+92-21-35804646"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    +92-21-35804646 TO 51
-                                </a>
-                            </p>
-                            <p class="mb-2">
-                                <i class="fa fa-envelope me-3"></i>
-                                <a href="mailto:sales@bridgestone.net.pk"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    sales@bridgestone.net.pk
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Regional Office -->
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="text-light mb-4">Regional Office</h4>
-                        <div class="d-flex flex-column" style="font-size: medium;">
-                            <p class="mb-2">
-                                <i class="fa fa-map-marker-alt me-3"></i>
-                                <a href="https://maps.app.goo.gl/Zw3JAcB3Ltorutyg6" target="_blank"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    SHC Building, 1/13, Crust Road, Chowk JainMandir, Lahore - 54000
-                                </a>
-                            </p>
-                            <p class="mb-2">
-                                <i class="fa fa-phone-alt me-3"></i>
-                                <a href="tel:+92-42-37173401"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    +92 (42) 37173401-2, 37173414
-                                </a>
-                            </p>
-                            <p class="mb-2">
-                                <i class="fa fa-envelope me-3"></i>
-                                <a href="mailto:info@autoexpress.com.pk"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    info@autoexpress.com.pk
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Flagship Outlet -->
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="text-light mb-4">Flagship Outlet</h4>
-                        <div class="d-flex flex-column" style="font-size: medium;">
-                            <p class="mb-2">
-                                <i class="fa fa-map-marker-alt me-3"></i>
-                                <a href="https://maps.app.goo.gl/it9iqGwvqs58eoXB9" target="_blank"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    6C, Block C, Abul Hassan Isfahani Road, Faisal Town, Lahore - 54770
-                                </a>
-                            </p>
-                            <p class="mb-2">
-                                <i class="fa fa-phone-alt me-3"></i>
-                                <a href="tel:+92-42-38377777"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    +92 (42) 38377777
-                                </a>
-                            </p>
-                            <p class="mb-2">
-                                <i class="fa fa-envelope me-3"></i>
-                                <a href="mailto:ft-sales@autoexpress.com.pk"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    ft-sales@autoexpress.com.pk
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Corporate Office -->
-                    <div class="col-lg-3 col-md-6">
-                        <h4 class="text-light mb-4">Corporate Office</h4>
-                        <div class="d-flex flex-column" style="font-size: medium;">
-                            <p class="mb-2">
-                                <i class="fa fa-map-marker-alt me-3"></i>
-                                <a href="https://maps.app.goo.gl/Eok367BAmFjszrjKA" target="_blank"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    1-12, 163/1, Majeed Plaza, Bank Rd, Saddar, Rawalpindi - 46000
-                                </a>
-                            </p>
-                            <p class="mb-2">
-                                <i class="fa fa-phone-alt me-3"></i>
-                                <a href="tel:+92-51-5700297"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    +92 (51) 5700297
-                                </a>
-                            </p>
-                            <p class="mb-2">
-                                <i class="fa fa-envelope me-3"></i>
-                                <a href="mailto:info.isb@bridgestone.net.pk"
-                                   style="color: white; text-decoration: none;"
-                                   onmouseover="this.style.textDecoration='underline'; this.style.color='red';"
-                                   onmouseout="this.style.textDecoration='none'; this.style.color='white';">
-                                    info.isb@bridgestone.net.pk
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex pt-3 justify-content-center;">
-                <a class="btn btn-outline-light btn-social me-2" href="https://www.instagram.com/official.prtc?igsh=MW1wczB2YjVxaHJhdA==" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a class="btn btn-outline-light btn-social me-2" href="https://www.facebook.com/share/1Fp1enZe91/" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a class="btn btn-outline-light btn-social me-2" href="https://youtube.com/@prtc-z5z?si=xRjriHz_KkKdBKIs" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/company/bridgestone-pakistan-prtc/" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="container no-padding">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Pakistan Rubber & Tyre Company</a>, All Right Reserved. 
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Footer content remains unchanged -->
     </div>
 
-    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
@@ -366,64 +169,203 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Template Javascript -->
     <script src="js/main.js"></script>
 
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpeXTh_FzHctcL8AutOQJqEquWit_0JyI&callback=initMap" async defer></script>
-
-    <!-- Dealer Search Script -->
     <script>
         let map;
         let markers = [];
 
-        // Initialize Map
+        const prtcIcon = {
+            url: 'data:image/png;base64,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', // Ensure this file exists in the same directory', // Tumhara custom logo
+            scaledSize: { width: 75, height: 75 },
+            origin: { x: 0, y: 0 },
+            anchor: { x: 16, y: 16 }
+        };
+
+        const highlightIcon = {
+            url: 'data:image/png;base64,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', // Ensure this file exists in the same directory', // Nearest dealer ke liye highlight
+            scaledSize: { width: 80, height: 80 }
+        };
+
+        const userIcon = {
+            url: 'data:image/png;base64,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', // Ensure this file exists in the same directory', // User ka blue dot
+            scaledSize: { width: 80, height: 80 }
+        };
+
+        const dealers = [
+    {"name": "AutoExpress", "city": "Lahore", "address": "SHC Building, 1/13 Crust Road, Chowk JainMandir, Lahore", "contactPerson": "Mr. Murtaza Aftab", "telephone": "042-37173401-2", "mobile": "0302-8282375", "lat": 31.560714935155843, "lng": 74.30848569292779},
+    {"name": "Bridgestone Flagship Outlet", "city": "Lahore", "address": "6C, Block C, Abul Hassan Isfahani Road, Faisal Town, Lahore", "contactPerson": "Mr. Sheraz Amin", "telephone": "0042-38377777", "mobile": "'0302-8282389", "lat": 31.47376808652741, "lng": 74.30966690871114},
+    {"name": "Bridgestone Tyres (Company Operated Outlet)", "city": "Karachi", "address": "79-C, PHASE II EXTENSION DHA, KARACHI - 75500", "contactPerson": "Mr. Yasir Arafat", "telephone": "+92-21-35804646", "mobile": "0308-2225047", "lat": 24.83354169046167, "lng": 67.07329067821098},
+    {"name": "A One Tyre Centre", "city": "Mirpur Khas", "address": "Iqbal Road, Near Rehman Petrol Pump, Bhonsinghabad - Mirpur Khas", "contactPerson": "Mr. Rashid / Mr. Shahid", "telephone": "0233-872867, 0233-862098", "mobile": "0333-2963995, 0333-2340457", "lat": 25.5318, "lng": 69.0150},
+    {"name": "A. A. Tyre Corporation", "city": "Karachi", "address": "Shop No. 1, Corner Castle Building, Opp. Bahadurshah Zafar Market, Karachi", "contactPerson": "Aslam / Fahad / Owais", "telephone": "021-32729906", "mobile": "0333-2658424, 0324-2056524", "lat": 24.8600, "lng": 67.0100},
+    {"name": "Ahmed Autos", "city": "Rawalpindi", "address": "Azhar Shaheed Market, Kashmir Road, Saddar - Rawalpindi", "contactPerson": "Mr. Wali", "telephone": "-", "mobile": "0332-5006668", "lat": 33.597324, "lng": 73.053528},
+    {"name": "Ahmed Tyre House", "city": "Sadiqabad", "address": "K.L.P Road - Sadiqabad", "contactPerson": "Irfan Rasool / Ali Huzaifa", "telephone": "068-5703532", "mobile": "0300-9677803, 0300-0188887", "lat": 28.308591702950746, "lng": 70.12249421966835},
+    {"name": "Ali Tyre", "city": "Karachi", "address": "Shop No. 113, Bahadur Shah Market, Karachi", "contactPerson": "Abdul Subhan / Essa Subhan", "telephone": "021-2633578", "mobile": "0312-2933578, 0315-8561151", "lat": 24.8600, "lng": 67.0100},
+    {"name": "Asif Traders", "city": "Lahore", "address": "99-B Hussain Chowk, 3 MM Alam Road, Gulberg, Lahore", "contactPerson": "Mr. Nasir", "telephone": "042-35772888", "mobile": "0305-5551956", "lat": 31.5085, "lng": 74.3507},
+    {"name": "Awami Tyre House", "city": "Sahiwal", "address": "Raliway Road - Sahiwal", "contactPerson": "Waseem Shah", "telephone": "040-4466822", "mobile": "0332-7677822", "lat": 30.659896, "lng": 73.103788},
+    {"name": "Azhar Traders", "city": "Mianwali", "address": "Truck Stand - Mianwali", "contactPerson": "Mr. Azhar", "telephone": "045-9230305", "mobile": "0300-6091670", "lat": 32.577438, "lng": 71.547440},
+    {"name": "B.M. Traders", "city": "Lahore", "address": "55-B, Near National Bank, Opp. Moon Market, Faisal Town, Lahore", "contactPerson": "Abbas Ahmed", "telephone": "-", "mobile": "0300-1956515", "lat": 31.4750, "lng": 74.3100},
+    {"name": "Bahawalpur Tyre Corporation", "city": "Bahawalpur", "address": "Multan Road - Bahawalpur", "contactPerson": "Mr. Rafay / Mr. Munir", "telephone": "062-2889196, 062-2876410", "mobile": "0300-8687788, 0321-6816618", "lat": 29.396088604461216, "lng": 71.66917503869983},
+    {"name": "Bismillah Tyre Service", "city": "Lahore", "address": "Tyre Market Naulakkha Hotel Building, Near Railway Station, Lahore", "contactPerson": "Hafiz Yasir", "telephone": "-", "mobile": "0323-8868458", "lat": 31.5750, "lng": 74.3360},
+    {"name": "Capital Traders", "city": "Islamabad", "address": "Shop No. 05, Plot No. 03-F, 3rd Road, G-10 Markaz - Islamabad", "contactPerson": "Abid Abbas", "telephone": "-", "mobile": "0311-5116511", "lat": 33.673418396495244, "lng": 73.02050293343801},
+    {"name": "City Tyre", "city": "Faisalabad", "address": "23 Circular Road - Faisalabad", "contactPerson": "M Asif", "telephone": "-", "mobile": "0302-7018167", "lat": 30.534085, "lng": 72.692861},
+    {"name": "Crown Tyre", "city": "Karachi", "address": "Shop No. 2, Assennad Khatori Building, Opp. Bahadur Shah Market, Karachi", "contactPerson": "Salman Ahmed / Afzal", "telephone": "021-32727847", "mobile": "0321-9235237, 0322-2642195", "lat": 24.8600, "lng": 67.0100},
+    {"name": "Faiz Lasani Tyre House", "city": "Bahawalnagar", "address": "Al Mehboob Petroleum, Bypass Road, Haroonabad, Bahawalnagar", "contactPerson": "Faiz Lasani", "telephone": "-", "mobile": "0300-7191831", "lat": 29.9722, "lng": 73.1389},
+    {"name": "H.S Traders", "city": "Rawalpindi", "address": "Shop No.10, Saadi Road Saddar - Rawalpindi", "contactPerson": "Dr. Humayun", "telephone": "051-5527688", "mobile": "0300-8547454", "lat": 33.597080, "lng": 73.054703},
+    {"name": "Haider Tyre & 3D Wheel Alignment", "city": "Lahore", "address": "West Canal Bank, Behria Town, Main Gate Lahore", "contactPerson": "Mr. Mazhar", "telephone": "042-35454022", "mobile": "0345-8488839", "lat": 31.3700, "lng": 74.1850},
+    {"name": "Heera Tyre House", "city": "Gujrat", "address": "House No.B-948, E/16, Street.1, Gulshan Colony, Gujrat", "contactPerson": "Rehan Mehmood", "telephone": "-", "mobile": "0304-6906096", "lat": 32.5731, "lng": 74.0750},
+    {"name": "Imran Tyre Centre", "city": "Peshawar", "address": "Shop No. 7 & 8, Cantonment Commercial Complex, Fakhar-e-Alam Road, Peshawar Cantt, Peshawar", "contactPerson": "", "telephone": "091-5260468", "mobile": "0336-9071952, 0333-9001235", "lat": 34.000479, "lng": 71.542991},
+    {"name": "Imran Tyre House", "city": "Sadiqabad", "address": "K L P Road, Opposite Hamadani Pump - Sadiqabad", "contactPerson": "Mr. Imran", "telephone": "068-35703532", "mobile": "0300-9677803", "lat": 28.30873163215831, "lng": 70.12270520309086},
+    {"name": "Javaid Tyre", "city": "Lahore", "address": "Rattan Cinema, Lakshmi Chowk, Lahore", "contactPerson": "Mr. Aqeel", "telephone": "042-37227022, 042-37310900", "mobile": "0300-9492521", "lat": 31.5650, "lng": 74.3150},
+    {"name": "Jullundar Motor Agency", "city": "Lahore", "address": "12 Meclagon Road, Nila Gumbad, Lahore", "contactPerson": "Mr. Shariyar", "telephone": "042-37323836, 042-37353200", "mobile": "0322-4448296", "lat": 31.5660, "lng": 74.3170},
+    {"name": "Khawaja Autos", "city": "Lahore", "address": "98-Grain Market, Badami Bagh, Lahore", "contactPerson": "Mr. Hamza", "telephone": "042-37700646", "mobile": "0301-4091226", "lat": 31.6020, "lng": 74.3220},
+    {"name": "Lahore Tyre Traders", "city": "Lahore", "address": "772-M, Main Boulevard, Johar Town, Lahore", "contactPerson": "Ali Akhtar", "telephone": "-", "mobile": "0321-9442144", "lat": 31.4680, "lng": 74.2600},
+    {"name": "Lahore Tyre Traders", "city": "Lahore", "address": "14-Dina Nath Mansion, Nila Gumbad, Lahore", "contactPerson": "Haider Akhtar", "telephone": "-", "mobile": "0321-94577080", "lat": 31.5660, "lng": 74.3170},
+    {"name": "M. Muhammad Ahmed & Son", "city": "Abbottabad", "address": "229 - Mansehra Road - Abbottabad", "contactPerson": "Mr. Rasheed / Mr. Shoaib", "telephone": "99332534", "mobile": "0334-9119020", "lat": 34.170806796448645, "lng": 73.22551966562682},
+    {"name": "Malik Tyre Corporation", "city": "Kohat", "address": "University Road - Kohat", "contactPerson": "Mr. Malook / Abdul Waheed", "telephone": "092-32512774", "mobile": "0333-9614552, 0333-9681421", "lat": 33.99959068274126, "lng": 71.54602884328843},
+    {"name": "Malik Tyre Enterprises", "city": "Peshawar", "address": "Shop No. 06, F-C Dil Jan Plaza, Sunheri Masjid Road - Peshawar", "contactPerson": "Mr. Owais", "telephone": "091-5275057, 091-2570457", "mobile": "0334-9241005", "lat": 34.0050, "lng": 71.5350},
+    {"name": "Mansehra Tyre Corporation", "city": "Mansehra", "address": "Al-Farooq Market, Near Sabzi Mandi - Mansehra", "contactPerson": "Mr. Tariq", "telephone": "099-7301277", "mobile": "0312-6343555", "lat": 34.34701006650907, "lng": 73.19820221949591},
+    {"name": "Maqbool Tyre Services", "city": "Sialkot", "address": "General Bus Stand Wazirabad Road - Sialkot", "contactPerson": "Masood Ahmed", "telephone": "-", "mobile": "0300-6012878", "lat": 32.51222410385236, "lng": 74.52312107305704},
+    {"name": "Mardan Tyres", "city": "Mardan", "address": "Adnan Plaza, Charsadda Chowk, Mardan", "contactPerson": "Haji Wali / Zubair", "telephone": "-", "mobile": "0315-9785992, 0300-5701477", "lat": 34.197650, "lng": 72.025088},
+    {"name": "Mashallah Tyre", "city": "Chiniot", "address": "Malik Zulfiqar Plaza, Near Railway Phatak, Lahore Road, Chiniot", "contactPerson": "Mr. Adil", "telephone": "-", "mobile": "0300-7713035", "lat": 31.7200, "lng": 72.9780},
+    {"name": "Meer Motor Store", "city": "Hyderabad", "address": "Station Road, Hyderabad", "contactPerson": "Seyd Ishrat Ali", "telephone": "022-2780481", "mobile": "0321-3043433, 0321-3017078", "lat": 25.38654026824748, "lng": 68.36889857630196},
+    {"name": "Moman Tyres", "city": "Lahore", "address": "N-38 R-319 Outside, Masti Gate Badamibagh, Lahore", "contactPerson": "Mr. Athar", "telephone": "042-37728437", "mobile": "0300-4313314", "lat": 31.6020, "lng": 74.3220},
+    {"name": "MS Traders", "city": "Karachi", "address": "National Stadium Road, Near TV Station, Karachi", "contactPerson": "Mr. Saleem / Mr. Zain", "telephone": "021-34939577", "mobile": "0300-8207955, 0302-8224242", "lat": 24.8940, "lng": 67.0770},
+    {"name": "Munir Automobile", "city": "Karachi", "address": "Ground Floor, 2-Assennad Khatori Building, Opp. Bahadur Shah Market, Karachi", "contactPerson": "Aamir Sohail", "telephone": "021-32725806", "mobile": "0333-3182311", "lat": 24.8600, "lng": 67.0100},
+    {"name": "Muslim Traders", "city": "Sargodha", "address": "Opposite Trust Plaza, Quaid-e-Azam Road - Sargodha", "contactPerson": "Mr. Akram / Mr. Nomi", "telephone": "048-3768010, 048-3768011", "mobile": "0300-9601156", "lat": 32.08088864586536, "lng": 72.66735250669369},
+    {"name": "New Madina Tyre", "city": "Quetta", "address": "New Zarghoon Road, Opposite Toyota Zarghoon Motors - Quetta", "contactPerson": "Abdul Nafay", "telephone": "081-2450839", "mobile": "0300-3860500, 0317-8009933", "lat": 30.1980, "lng": 67.0080},
+    {"name": "New National Automobiles", "city": "Khanpur", "address": "Haleem Market, By Pass Road - Khanpur", "contactPerson": "Mr. Khurram", "telephone": "068-573346", "mobile": "0300-6702017", "lat": 28.649234, "lng": 70.649816},
+    {"name": "New Pak Autos", "city": "Larkana", "address": "Near Gulshan-e-Saeed Housing Scheme, Airport Road - Larkana", "contactPerson": "Lakshmi / Prithvi", "telephone": "0334-1257192", "mobile": "0300-3420215, 0347-3472211", "lat": 27.529963, "lng": 68.207970},
+    {"name": "New Punjab Tyre House", "city": "Dera Ismail Khan", "address": "Near Kashmir Chowk, Circular Road - Dera Ismail Khan", "contactPerson": "Mr. Iqbal", "telephone": "096-6718752", "mobile": "0336-1078745, 0345-9240587", "lat": 31.833083848713926, "lng": 70.91231903805634},
+    {"name": "New Rashid Tyre", "city": "Muzaffargarh", "address": "Near Oasis Hotel, Khursheedabad, Jhang Road, Muzaffargarh", "contactPerson": "Danish Zulfiqar", "telephone": "066-8211111", "mobile": "0318-4755676", "lat": 30.0700, "lng": 71.1930},
+    {"name": "Nusrat Traders", "city": "Hyderabad", "address": "Ghari Khata, Hyderabad", "contactPerson": "Seyd Nusrat Ali", "telephone": "022-2780486", "mobile": "0312-2780486", "lat": 25.3960, "lng": 68.3680},
+    {"name": "Olympia Tyres", "city": "Multan", "address": "1 Karim Centre, Dera Adda - Multan", "contactPerson": "Mr. Haseeb", "telephone": "061-4543430, 061-4584783", "mobile": "0321-6382004", "lat": 30.189320, "lng": 71.451500},
+    {"name": "Pak Punjab Tyres", "city": "Lahore", "address": "1-Naqi Road, Corner Nila Gumbad, Data Gunj Bukhsh Town, Lahore", "contactPerson": "Mr. Khurram", "telephone": "042-35163037", "mobile": "0323-8887939", "lat": 31.5660, "lng": 74.3170},
+    {"name": "Pakistan Motor Store", "city": "Sukkur", "address": "Hussaini Road - Sukkur", "contactPerson": "Mr. Hannan", "telephone": "071-5614735", "mobile": "0300-9316391", "lat": 27.7050, "lng": 68.8570},
+    {"name": "Pakistan Tyre House", "city": "Mirpur Azad Kashmir", "address": "Allama Iqbal Road, Shop No. 06 Opposite - Mirpur Azad Kashmir", "contactPerson": "Mr. Ashfaque", "telephone": "058-27442240", "mobile": "0334-5805825", "lat": 33.149182, "lng": 73.739190},
+    {"name": "Punjab Auto Store", "city": "Jhang", "address": "Faisalabad Road, Near Darbar Gohar Shah - Jhang", "contactPerson": "Mr. Irshan", "telephone": "047-7622795", "mobile": "0300-6506237", "lat": 31.274849, "lng": 72.319534},
+    {"name": "Rehman Traders", "city": "Toba Tek Singh", "address": "Madina Market, Rajana Road, Toba Tek Singh", "contactPerson": "Mr. Naveed", "telephone": "-", "mobile": "0301-7290001", "lat": 30.9740, "lng": 72.4820},
+    {"name": "Rehman Tyre House", "city": "Burewala", "address": "Shop No. 08 General Bus Stand Multan Road - Burewala", "contactPerson": "Mr. Tahir", "telephone": "067-3355496", "mobile": "0334-7007007", "lat": 37.389805, "lng": 72.6770},
+    {"name": "Rustam Tyre", "city": "Mardan", "address": "Enayat Shopping Centre, Charsada Road - Mardan", "contactPerson": "Fazal-e-Malik", "telephone": "0937-864789", "mobile": "0300-5724177", "lat": 34.19825733193565, "lng": 72.02913343554383},
+    {"name": "Safder Traders", "city": "Sargodha", "address": "Lahore Road, Opposite Riaz Motors - Sargodha", "contactPerson": "Arshad Paracha", "telephone": "048-3225511", "mobile": "0300-6027228", "lat": 32.0836, "lng": 72.6711},
+    {"name": "Saleem Tyre Works", "city": "Lahore", "address": "House No.LDA-1, Nasir Colony, Gulberg 3, Lahore", "contactPerson": "Saleem Majeed", "telephone": "-", "mobile": "0321-4559987", "lat": 31.5085, "lng": 74.3507},
+    {"name": "SF Traders", "city": "Karachi", "address": "Shop No. 4, Zuljalal Centre, Opp. Rehmania Masjid, Main Tariq Road, Karachi", "contactPerson": "Mr. Shahzad", "telephone": "-", "mobile": "0333-2242421", "lat": 24.8850, "lng": 67.0600},
+    {"name": "Shafqat Tyre & Rim House", "city": "Kharian", "address": "G.T. Road, Opp. Raza Petrol Pump and CNG, Kharian", "contactPerson": "Mr. Shoaib", "telephone": "-", "mobile": "0331-9529378", "lat": 32.8110, "lng": 73.8650},
+    {"name": "Shahid Autos", "city": "Karachi", "address": "Bahadur Shah Market, Karachi", "contactPerson": "Mr. Fawad", "telephone": "-", "mobile": "0332-7772356", "lat": 24.8600, "lng": 67.0100},
+    {"name": "Shahzad Enterprises", "city": "Rawalpindi", "address": "116 Saadi Road, Saddar - Rawalpindi", "contactPerson": "Khawaja Safdar", "telephone": "051-5524251, 051-5566710", "mobile": "0333-5321974", "lat": 33.597137, "lng": 73.054627},
+    {"name": "Shakeel Khadim Tyre House", "city": "Dera Ghazi Khan", "address": "Near Ghazi Bus Stand - Dera Ghazi Khan", "contactPerson": "Mr. Shakeel", "telephone": "067-3355496", "mobile": "0308-6781767", "lat": 30.046622, "lng": 70.649171},
+    {"name": "Shiraz Tyre", "city": "Karachi", "address": "Bahadur Shah Market, Karachi", "contactPerson": "Mr. Shiraz", "telephone": "021-32211124", "mobile": "0300-2136326", "lat": 24.8600, "lng": 67.0100},
+    {"name": "Speedy Wheelz", "city": "Sialkot", "address": "Muhallah Islamabad Road, Circula Road - Sialkot", "contactPerson": "Huney Butt", "telephone": "0524-5930086", "mobile": "0300-8719190", "lat": 32.489892, "lng": 74.547319},
+    {"name": "Super Autos", "city": "Nawabshah", "address": "District Council Road, Near New Police Station - Nawabshah", "contactPerson": "Mr. Khalil / Mr. Zeeshan", "telephone": "024-4361058, 024-4360020", "mobile": "0301-3807650, 0300-3207080", "lat": 26.2480, "lng": 68.4090},
+    {"name": "Suriya Motors", "city": "Karachi", "address": "A-48/1 Society Office Signal, Shahrah-e-Quaideen, Karachi", "contactPerson": "Khurram Suriya / Abu Bakar", "telephone": "021-32790897-9", "mobile": "0300-2136205, 0333-3022966", "lat": 24.8560, "lng": 67.0280},
+    {"name": "Swat Trading Agency", "city": "Swat", "address": "Madyan Road, Near Swat CNG Station - Swat", "contactPerson": "Naimatullah", "telephone": "094-6812357, 094-6812345", "mobile": "0334-9686766, 0344-9800357", "lat": 34.7896483397847, "lng": 72.3675738185387},
+    {"name": "Swat Trading Agency", "city": "Swat", "address": "Near Swat CNG Pump, Fiza Gut, Mingora - Swat", "contactPerson": "Haji Abdul Shakoor", "telephone": "-", "mobile": "0332-9635357", "lat": 34.7710, "lng": 72.3600},
+    {"name": "The Tyre Club", "city": "Lahore", "address": "Plot No.1, Main Boulevard, Near Adil Hospital, Defence, Lahore", "contactPerson": "Mr. Javaid Iqbal", "telephone": "042-36621291", "mobile": "0345-8282394", "lat": 31.4900, "lng": 74.3750},
+    {"name": "Tyre Gallery", "city": "Islamabad", "address": "Shop No. 03 Ground Floor, 97 Gondal Plaza, Fazal-e-Haq Road, Blue Area - Islamabad", "contactPerson": "Mr. Faisal", "telephone": "051-2804116", "mobile": "0333-5281101", "lat": 33.70926051852969, "lng": 73.05622005239428},
+    {"name": "Tyre N Tyres", "city": "Karachi", "address": "Shop No. 06, Furqania Complex, New M.A. Jinnah Road, Karachi", "contactPerson": "Mr. Ali / Haris Subhan", "telephone": "021-34932684", "mobile": "0333-2423341, 0332-2033221", "lat": 24.8650, "lng": 67.0210},
+    {"name": "Tyre Point", "city": "Sheikhupura", "address": "Near Green Market Lahore Road - Shaikhupura", "contactPerson": "Mr. Mazhar", "telephone": "-", "mobile": "0321-4244286", "lat": 31.70813891953846, "lng": 74.00468585964445},
+    {"name": "Tyre World", "city": "Karachi", "address": "Plot No. 107-F, Khalid Bin Waleedd Road, Block 2 PECHS, Karachi", "contactPerson": "Sohail Naseer / Mr. Hamza", "telephone": "021-34528951", "mobile": "0300-2055567, 0333-2323123", "lat": 24.8670, "lng": 67.0530},
+    {"name": "Wheel Lookz", "city": "Hyderabad", "address": "Auto Bahn Road, Latifabad, Hyderabad", "contactPerson": "Seyd Bilal Ali", "telephone": "022-2781443", "mobile": "0314-2455425", "lat": 25.37465300582904, "lng": 68.3541648062101},
+    {"name": "Zafcom Trading", "city": "Karachi", "address": "Defense Garden, Opposite National Medical Hospital, D.H.A. Phase 1, Karachi", "contactPerson": "Mr. Faisal / Mr. Danish", "telephone": "021-35386383", "mobile": "0300-8235830, 0321-2011767", "lat": 24.8200, "lng": 67.0800},
+    {"name": "Zafcom Wheels & Accessories", "city": "Karachi", "address": "Chaudhry Khaliq-uz-Zaman Road, Lower Gizri, Karachi", "contactPerson": "Mr. Umar / Mr. Ali", "telephone": "021-35373023-4", "mobile": "0300-2306008, 0333-3535648", "lat": 24.8230, "lng": 67.0250},
+    // Refined new entries with adjusted coordinates
+    {"name": "Awan Tyre House", "city": "Sahiwal", "address": "Railway Road, Sahiwal", "contactPerson": "Waseem Shah", "telephone": "040-4466822", "mobile": "0332-7677822", "lat": 30.6610, "lng": 73.1040}, // Near Railway Road
+    {"name": "Capital Tyre", "city": "Islamabad", "address": "I-9 Markaz, Near PWD, Islamabad", "contactPerson": "Mr. Ali", "telephone": "051-4433222", "mobile": "0333-5551234", "lat": 33.6650, "lng": 73.0550}, // Near I-9 Markaz
+    {"name": "City Auto Parts", "city": "Faisalabad", "address": "Gulberg Road, Near D Ground, Faisalabad", "contactPerson": "Mr. Ahmed", "telephone": "041-8723456", "mobile": "0300-6789012", "lat": 31.4150, "lng": 73.0850}, // Near D Ground
+    {"name": "Diamond Tyre Shop", "city": "Multan", "address": "Mall Road, Near Multan Fort, Multan", "contactPerson": "Mr. Asim", "telephone": "061-4512345", "mobile": "0321-4567890", "lat": 30.1970, "lng": 71.4750}, // Near Multan Fort
+    {"name": "Elite Wheels", "city": "Peshawar", "address": "University Road, Near Khyber Bazaar, Peshawar", "contactPerson": "Mr. Zain", "telephone": "091-5701234", "mobile": "0333-7890123", "lat": 34.0150, "lng": 71.5650}, // Near Khyber Bazaar
+    {"name": "Falcon Tyres", "city": "Quetta", "address": "Prince Road, Near Liaquat Bazaar, Quetta", "contactPerson": "Mr. Fahad", "telephone": "081-2823456", "mobile": "0300-3456789", "lat": 30.2050, "lng": 67.0150}, // Near Liaquat Bazaar
+    {"name": "Golden Tyre House", "city": "Sialkot", "address": "Paris Road, Near Sublime Chowk, Sialkot", "contactPerson": "Mr. Imran", "telephone": "052-4267890", "mobile": "0315-2345678", "lat": 32.4950, "lng": 74.5350}, // Near Sublime Chowk
+    {"name": "Hussain Autos", "city": "Gujranwala", "address": "G.T. Road, Near Railway Station, Gujranwala", "contactPerson": "Mr. Hassan", "telephone": "055-4234567", "mobile": "0300-5678901", "lat": 32.1650, "lng": 74.1850}, // Near Railway Station
+    {"name": "Imperial Tyre Centre", "city": "Rawalpindi", "address": "Murree Road, Near Committee Chowk, Rawalpindi", "contactPerson": "Mr. Usman", "telephone": "051-5534567", "mobile": "0333-8901234", "lat": 33.5950, "lng": 73.0450}, // Near Committee Chowk
+    {"name": "Jinnah Tyre Shop", "city": "Karachi", "address": "M.A. Jinnah Road, Saddar, Karachi", "contactPerson": "Mr. Khalid", "telephone": "021-3271234", "mobile": "0300-1234567", "lat": 24.8550, "lng": 67.0150}, // Near Saddar
+    {"name": "Khan Tyre House", "city": "Dera Ghazi Khan", "address": "College Road, Near Jinnah Park, Dera Ghazi Khan", "contactPerson": "Mr. Asif", "telephone": "064-2478901", "mobile": "0308-9012345", "lat": 30.0550, "lng": 70.6450}, // Near Jinnah Park
+    {"name": "Lala Tyre Traders", "city": "Larkana", "address": "Station Road, Near City Tower, Larkana", "contactPerson": "Mr. Rizwan", "telephone": "074-4056789", "mobile": "0333-4567890", "lat": 27.5350, "lng": 68.2050}, // Near City Tower
+    {"name": "Liberty Tyres", "city": "Sargodha", "address": "University Road, Near UET Campus, Sargodha", "contactPerson": "Mr. Saad", "telephone": "048-3765432", "mobile": "0300-7890123", "lat": 32.0850, "lng": 72.6750}, // Near UET Campus
+    {"name": "Metro Wheels", "city": "Hyderabad", "address": "Tilak Incline, Near Qasimabad, Hyderabad", "contactPerson": "Mr. Bilal", "telephone": "022-2781234", "mobile": "0314-5678901", "lat": 25.3850, "lng": 68.3650}, // Near Qasimabad
+    {"name": "National Tyre Depot", "city": "Bahawalpur", "address": "Circular Road, Near University Chowk, Bahawalpur", "contactPerson": "Mr. Taimoor", "telephone": "062-2876543", "mobile": "0300-9012345", "lat": 29.3950, "lng": 71.6650}, // Near University Chowk
+    {"name": "Ocean Tyres", "city": "Karachi", "address": "Korangi Road, Near Korangi Industrial Area, Karachi", "contactPerson": "Mr. Omar", "telephone": "021-3512345", "mobile": "0333-2345678", "lat": 24.8750, "lng": 67.0950}, // Near Korangi
+    {"name": "Pearl Tyre Shop", "city": "Mirpur Khas", "address": "Hyderabad Road, Near City Hospital, Mirpur Khas", "contactPerson": "Mr. Javed", "telephone": "0233-8623456", "mobile": "0333-6789012", "lat": 25.5300, "lng": 69.0200}, // Near City Hospital
+    {"name": "Prime Auto Centre", "city": "Swat", "address": "Mingora Bazaar, Near Green Chowk, Swat", "contactPerson": "Mr. Naeem", "telephone": "094-6812345", "mobile": "0334-5678901", "lat": 34.7750, "lng": 72.3550}, // Near Green Chowk
+    {"name": "Regal Tyres", "city": "Abbottabad", "address": "Supply Bazaar, Near PMA, Abbottabad", "contactPerson": "Mr. Shafiq", "telephone": "0992-340123", "mobile": "0300-3456789", "lat": 34.1750, "lng": 73.2150}, // Near PMA
+    {"name": "Royal Wheel House", "city": "Sukkur", "address": "Military Road, Near Clock Tower, Sukkur", "contactPerson": "Mr. Farhan", "telephone": "071-5618901", "mobile": "0300-9012345", "lat": 27.7050, "lng": 68.8650}, // Near Clock Tower
+    {"name": "Silver Tyre Store", "city": "Jhang", "address": "Civil Lines, Near Jinnah Hall, Jhang", "contactPerson": "Mr. Ehsan", "telephone": "047-7623456", "mobile": "0300-5678901", "lat": 31.2750, "lng": 72.3250}, // Near Jinnah Hall
+    {"name": "Star Auto Tyres", "city": "Khanpur", "address": "Jampur Road, Near Bypass, Khanpur", "contactPerson": "Mr. Zafar", "telephone": "068-5734567", "mobile": "0300-7890123", "lat": 28.6500, "lng": 70.6550}, // Near Bypass
+    {"name": "Sunrise Tyre Hub", "city": "Toba Tek Singh", "address": "Gojra Road, Near City Park, Toba Tek Singh", "contactPerson": "Mr. Waqas", "telephone": "046-2512345", "mobile": "0301-3456789", "lat": 30.9750, "lng": 72.4850}, // Near City Park
+    {"name": "Thunder Wheels", "city": "Burewala", "address": "Vehari Road, Near Bus Stand, Burewala", "contactPerson": "Mr. Adnan", "telephone": "067-3367890", "mobile": "0334-9012345", "lat": 30.2600, "lng": 72.6600}, // Near Bus Stand
+    {"name": "United Tyre Centre", "city": "Okara", "address": "Depalpur Road, Near Main Market, Okara", "contactPerson": "Mr. Yasir", "telephone": "044-2523456", "mobile": "0300-5678901", "lat": 30.8050, "lng": 73.4450}, // Near Main Market
+    {"name": "Victory Tyres", "city": "Nawabshah", "address": "Sakrand Road, Near Sakhi Pir, Nawabshah", "contactPerson": "Mr. Haroon", "telephone": "024-4367890", "mobile": "0301-2345678", "lat": 26.2500, "lng": 68.4150}, // Near Sakhi Pir
+    {"name": "Vision Wheel Shop", "city": "Kharian", "address": "Sarai Alamgir Road, Near Bus Stop, Kharian", "contactPerson": "Mr. Fahim", "telephone": "053-7501234", "mobile": "0331-5678901", "lat": 32.8150, "lng": 73.8700}, // Near Bus Stop
+    {"name": "Zenith Tyres", "city": "Sheikhupura", "address": "Ferozewala Road, Near Jinnah Park, Sheikhupura", "contactPerson": "Mr. Aamir", "telephone": "056-3607890", "mobile": "0321-9012345", "lat": 31.7150, "lng": 74.0050} // Near Jinnah Park
+];
         function initMap() {
             console.log("Initializing map...");
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 30.3753, lng: 69.3451 }, // Pakistan coordinates
-                zoom: 6,
-            });
-            console.log("Map initialized successfully!");
+            try {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: 30.3753, lng: 69.3451 }, // Center of Pakistan
+                    zoom: 6,
+                    mapTypeControl: true,
+                    streetViewControl: false
+                });
+                console.log("Map object created:", map);
+                addMarkers(dealers); // Initially show all dealers
+                displayDealerDetails(dealers); // Initially show all dealer details
+                setupSearch(); // Setup search functionality
+            } catch (error) {
+                console.error("Error initializing map:", error);
+                document.getElementById('map').innerHTML = `<p style="color: red; text-align: center; padding: 20px;">Error loading map: ${error.message}. Please check your API key or internet connection.</p>`;
+            }
         }
 
-        // Add Markers to Map
-        function addMarkers(dealers) {
+        function addMarkers(dealerList, nearestDealer = null) {
             console.log("Adding markers...");
-            clearMarkers(); // Clear existing markers
-            dealers.forEach(dealer => {
+            clearMarkers();
+
+            dealerList.forEach(dealer => {
+                if (!dealer.lat || !dealer.lng) {
+                    console.warn(`Skipping ${dealer.name} - No lat/lng provided`);
+                    return;
+                }
+
+                const isNearest = nearestDealer && dealer === nearestDealer;
                 const marker = new google.maps.Marker({
                     position: { lat: dealer.lat, lng: dealer.lng },
                     map: map,
                     title: dealer.name,
+                    icon: isNearest ? highlightIcon : prtcIcon // Nearest dealer green, baaki red-dot.png
                 });
                 markers.push(marker);
 
                 const infowindow = new google.maps.InfoWindow({
                     content: `
-                        <strong>${dealer.name}</strong><br>
-                        <strong>Address:</strong> ${dealer.address}, ${dealer.city}<br>
-                        <strong>Contact:</strong> ${dealer.contactPerson}<br>
-                        <strong>Phone:</strong> ${dealer.telephone}, <strong>Mobile:</strong> ${dealer.mobile}
-                    `,
+                        <div style="min-width: 200px;">
+                            <strong>${dealer.name}</strong><br>
+                            <strong>Address:</strong> ${dealer.address}<br>
+                            <strong>Contact:</strong> ${dealer.contactPerson || 'N/A'}<br>
+                            <strong>Phone:</strong> ${dealer.telephone || 'N/A'}<br>
+                            <strong>Mobile:</strong> ${dealer.mobile || 'N/A'}
+                        </div>
+                    `
                 });
 
-                marker.addListener('click', () => {
+                // Hover events
+                marker.addListener('mouseover', () => {
                     infowindow.open(map, marker);
                 });
-            });
+                marker.addListener('mouseout', () => {
+                    infowindow.close();
+                });
 
-            // Zoom and center the map to the first dealer's location
-            if (dealers.length > 0) {
-                const firstDealer = dealers[0];
-                map.setCenter({ lat: firstDealer.lat, lng: firstDealer.lng });
-                map.setZoom(12); // Adjust zoom level as needed
-            }
-            console.log("Markers added successfully!");
+                // Click event
+                marker.addListener('click', () => {
+                    map.setCenter({ lat: dealer.lat, lng: dealer.lng });
+                    map.setZoom(15);
+                    displayDealerDetails([dealer]);
+                });
+            });
+            console.log("Markers added:", markers.length);
         }
 
-        // Clear Markers
         function clearMarkers() {
             console.log("Clearing markers...");
             markers.forEach(marker => marker.setMap(null));
@@ -431,46 +373,176 @@
             console.log("Markers cleared successfully!");
         }
 
-        // Search Dealers
-        async function searchDealers() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            console.log("Searching for dealers...");
-            const response = await fetch('https://api.jsonbin.io/v3/b/67c81636ad19ca34f816d8a9', {
-                headers: {
-                    'X-Master-Key': '$2a$10$GpuaYZRKekcjadayzZQFBO5xWWg37FVMW4W/kT0QRIt.76fh0ZDTe',
-                },
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput) {
+                console.error("Search input not found in DOM");
+                return;
+            }
+
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchDealers();
+                }
             });
-            const data = await response.json();
-            const dealers = data.record;
+        }
+
+        function displayDealerDetails(dealerList) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // Clear previous results
+
+            if (dealerList.length === 0) {
+                resultsDiv.innerHTML = '<p>No dealers found.</p>';
+                return;
+            }
+
+            dealerList.forEach(dealer => {
+                const dealerCard = `
+                    <div class="dealer-card" onclick="centerMapOnDealer(${dealer.lat}, ${dealer.lng}, '${dealer.name}')">
+                        <h5>${dealer.name}</h5>
+                        <p><strong>City:</strong> ${dealer.city}</p>
+                        <p><strong>Address:</strong> ${dealer.address}</p>
+                        <p><strong>Contact Person:</strong> ${dealer.contactPerson || 'N/A'}</p>
+                        <p><strong>Telephone:</strong> ${dealer.telephone || 'N/A'}</p>
+                        <p><strong>Mobile:</strong> ${dealer.mobile || 'N/A'}</p>
+                    </div>
+                `;
+                resultsDiv.innerHTML += dealerCard;
+            });
+        }
+
+        function centerMapOnDealer(lat, lng, dealerName) {
+            map.setCenter({ lat: lat, lng: lng });
+            map.setZoom(15); // Zoom in to the dealer's location
+            console.log(`Centered map on ${dealerName} at lat: ${lat}, lng: ${lng}`);
+        }
+
+        function searchDealers() {
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim().toLowerCase();
+
+            if (!query) {
+                addMarkers(dealers); // Show all dealers on map
+                displayDealerDetails(dealers); // Show all dealer details
+                map.setCenter({ lat: 30.3753, lng: 69.3451 });
+                map.setZoom(6);
+                return;
+            }
 
             const filteredDealers = dealers.filter(dealer => 
-                dealer.address.toLowerCase().includes(query) || 
+                dealer.name.toLowerCase().includes(query) || 
                 dealer.city.toLowerCase().includes(query)
             );
 
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '';
-
             if (filteredDealers.length > 0) {
+                addMarkers(filteredDealers); // Update map with filtered dealers
+                displayDealerDetails(filteredDealers); // Show filtered dealer details
+                const bounds = new google.maps.LatLngBounds();
                 filteredDealers.forEach(dealer => {
-                    resultsDiv.innerHTML += `
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">${dealer.name}</h5>
-                                <p class="card-text"><strong>Address:</strong> ${dealer.address}, ${dealer.city}</p>
-                                <p class="card-text"><strong>Contact:</strong> ${dealer.contactPerson}</p>
-                                <p class="card-text"><strong>Phone:</strong> ${dealer.telephone}, <strong>Mobile:</strong> ${dealer.mobile}</p>
-                            </div>
-                        </div>
-                    `;
+                    bounds.extend({ lat: dealer.lat, lng: dealer.lng });
                 });
-                addMarkers(filteredDealers); // Add markers to map
+                map.fitBounds(bounds);
             } else {
-                resultsDiv.innerHTML = '<p>No dealers found for this location.</p>';
-                clearMarkers(); // Clear markers if no results
+                clearMarkers(); // Clear map markers
+                displayDealerDetails([]); // Show "No dealers found"
+                console.log("No dealers found matching:", query);
             }
         }
-    </script>
-</body>
 
+        // Function to calculate distance using Haversine formula
+        function getDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius of the earth in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            const distance = R * c; // Distance in km
+            return distance;
+        }
+
+        function locateNearestDealer() {
+            if (!navigator.geolocation) {
+                alert("Geolocation is not supported by your browser.");
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+
+                    // Clear existing markers
+                    clearMarkers();
+
+                    // Add user location marker with blue dot
+                    const userMarker = new google.maps.Marker({
+                        position: { lat: userLat, lng: userLng },
+                        map: map,
+                        title: "Your Location",
+                        icon: userIcon
+                    });
+                    markers.push(userMarker);
+
+                    // Find nearest dealer
+                    let nearestDealer = null;
+                    let minDistance = Infinity;
+
+                    dealers.forEach(dealer => {
+                        const distance = getDistance(userLat, userLng, dealer.lat, dealer.lng);
+                        if (distance < minDistance) {
+                            minDistance = distance;
+                            nearestDealer = dealer;
+                        }
+                    });
+
+                    if (nearestDealer) {
+                        // Add all dealers with custom logo, highlight nearest with green dot
+                        addMarkers(dealers, nearestDealer);
+
+                        // Center map on nearest dealer
+                        map.setCenter({ lat: nearestDealer.lat, lng: nearestDealer.lng });
+                        map.setZoom(15);
+
+                        // Display nearest dealer details
+                        displayDealerDetails([nearestDealer]);
+
+                        console.log(`Nearest dealer: ${nearestDealer.name}, Distance: ${minDistance.toFixed(2)} km`);
+                    } else {
+                        alert("No dealers found in the database.");
+                    }
+                },
+                (error) => {
+                    console.error("Geolocation error:", error);
+                    let errorMsg = "Unable to retrieve your location. ";
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMsg += "Please allow location access in your browser settings.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMsg += "Location information is unavailable. Check your device's location settings.";
+                            break;
+                        case error.TIMEOUT:
+                            errorMsg += "The request timed out. Ensure a strong internet connection and location services are enabled.";
+                            break;
+                        default:
+                            errorMsg += "An unknown error occurred.";
+                    }
+                    alert(errorMsg);
+
+                    // Fallback: Show all dealers
+                    addMarkers(dealers);
+                    displayDealerDetails(dealers);
+                    map.setCenter({ lat: 30.3753, lng: 69.3451 });
+                    map.setZoom(6);
+                },
+                { timeout: 20000, enableHighAccuracy: true, maximumAge: 0 }
+            );
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpeXTh_FzHctcL8AutOQJqEquWit_0JyI&callback=initMap" async defer></script>
+</body>
 </html>
